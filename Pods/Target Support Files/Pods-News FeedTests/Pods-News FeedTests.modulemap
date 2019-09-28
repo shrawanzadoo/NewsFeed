@@ -1,0 +1,6 @@
+module Pods_News_FeedTests {
+  umbrella header "Pods-News FeedTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
