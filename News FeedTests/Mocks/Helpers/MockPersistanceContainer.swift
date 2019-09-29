@@ -12,12 +12,15 @@ import CoreData
 
 class MockPersistanceContainer {
     
+    public static let container = MockPersistanceContainer()
+    
     lazy var managedObjectModel: NSManagedObjectModel = {
         let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
         return managedObjectModel
     }()
     
     lazy var mockPersistentContainer: NSPersistentContainer = {
+        objc_sync_enter(self)
         let container = NSPersistentContainer(name: "NewsFeed", managedObjectModel: managedObjectModel)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
@@ -30,7 +33,8 @@ class MockPersistanceContainer {
                 XCTFail("Error creating mock: \(error)")
             }
         }
-        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        objc_sync_exit(self)
         return container
     }()
 }

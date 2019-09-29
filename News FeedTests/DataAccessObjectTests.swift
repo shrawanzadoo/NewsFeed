@@ -8,53 +8,61 @@
 
 import Foundation
 import XCTest
+import CoreData
 @testable import News_Feed
 
 class DataAccessObjectTests: XCTestCase {
     
     var dao: DataAccessObject!
-    let mockPersistanceProvider = MockPersistanceProvider()
+    var mockPersistanceProvider = MockPersistanceProvider()
     let mockNetworkManager = MockNetworkManager()
     let queueManager = QueueManager.shared
     
     override func setUp() {
-        //load data for Users, Comments and Posts into mock storage for retrevial
-        loadUsersIntoStorage()
-        loadCommentsIntoStorage()
-        loadPostsIntoStorage()
-        do {
-            try mockPersistanceProvider.getPersistanceContainer().viewContext.save()
-        } catch let error {
-            print("\(error)")
-        }
+        super.setUp()
         
         dao = DataAccessObjectImpl(queueManager: queueManager, networkManager: mockNetworkManager, persistanceProvider: mockPersistanceProvider)
     }
     
     func testUserFetch() {
+        // load users into storage
+        loadUsersIntoStorage()
+        
+        // verify users in storage
         XCTAssertEqual(10, dao.fetchUsersFromStorage().count)
     }
     
     func testPostsFetch() {
+        // load posts into storage
+        loadPostsIntoStorage()
+        
+        // verify posts in storage
         XCTAssertEqual(100, dao.fetchPostsFromStorage().count)
     }
     
     func testCommentsFetch() {
+        // load comments into storage
+        loadCommentsIntoStorage()
+        
+        // verify comments in storage
         XCTAssertEqual(500, dao.fetchCommentsFromStorage().count)
     }
     
     //MARK: Helpers
     
     func loadUsersIntoStorage() {
-        _ = MockDataHelper.getUsers()
+        let users = MockDataHelper.getUsers(saveData: true)
+        print("🚨 TEST users : \(users.count)")
     }
     
     func loadPostsIntoStorage() {
-        _ = MockDataHelper.getPosts()
+        let posts: Posts = MockDataHelper.getPosts(saveData: true)
+        print("🚨 TEST posts : \(posts.count)")
     }
     
     func loadCommentsIntoStorage() {
-        _ = MockDataHelper.getComments()
+        let comments: Comments = MockDataHelper.getComments(saveData: true)
+        print("🚨 TEST comments : \(comments.count)")
     }
 }
 

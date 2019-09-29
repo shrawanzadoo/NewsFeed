@@ -87,11 +87,6 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearPostsFromStorage() {
         
-        let customSerialQueue = DispatchQueue(label: "customSerialQueue")
-        customSerialQueue.async {
-            // Code
-        }
-        
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
         let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
         managedContext.performAndWait {
@@ -105,7 +100,6 @@ class DataAccessObjectImpl: DataAccessObject {
                 print("Clear Posts error \(error.localizedDescription)")
             }
         }
-        
     }
     
     private func clearUsers() {

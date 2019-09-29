@@ -14,21 +14,21 @@ import RxSwift
 class MockNetworkManager: NetworkManager {
     
     var fetchUsersCount = 0
-    var fetchUsersReturns = MockDataHelper.getUsers()
+    lazy var fetchUsersReturns = MockDataHelper.getUsers()
     func fetchUsers() -> Single<Result<Users, Error>> {
         fetchUsersCount += 1
         return Single.just(.success(fetchUsersReturns))
     }
     
     var fetchPostsCount = 0
-    var fetchPostsReturns = MockDataHelper.getPosts()
+    lazy var fetchPostsReturns = MockDataHelper.getPosts()
     func fetchPosts() -> Single<Result<Posts, Error>> {
         fetchPostsCount += 1
         return Single.just(.success(fetchPostsReturns))
     }
     
     var fetchCommentsCount = 0
-    var fetchCommentsReturns = MockDataHelper.getComments()
+    lazy var fetchCommentsReturns = MockDataHelper.getComments()
     func fetchComments() -> Single<Result<Comments, Error>> {
         fetchCommentsCount += 1
         return Single.just(.success(fetchCommentsReturns))

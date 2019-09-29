@@ -21,6 +21,7 @@ class CoreDataManager {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
+        objc_sync_enter(self)
         let container = NSPersistentContainer(name: modelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -38,6 +39,8 @@ class CoreDataManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        objc_sync_exit(self)
         return container
     }()
     

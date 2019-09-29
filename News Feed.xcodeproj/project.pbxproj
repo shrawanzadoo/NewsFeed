@@ -353,8 +353,8 @@
 				0305D24C2337D01C005B4A4B /* Stored responses */,
 				0305D2512337D15C005B4A4B /* Mocks */,
 				03CEA39822D2557E00EDEBE9 /* EntityParsingTests.swift */,
-				03CEA39A22D2557E00EDEBE9 /* Info.plist */,
 				0305D2572337D7D5005B4A4B /* DataAccessObjectTests.swift */,
+				03CEA39A22D2557E00EDEBE9 /* Info.plist */,
 			);
 			path = "News FeedTests";
 			sourceTree = "<group>";

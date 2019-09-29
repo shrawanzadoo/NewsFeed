@@ -13,6 +13,6 @@ import CoreData
 
 class MockPersistanceProvider: PersistanceProvider {
     func getPersistanceContainer() -> NSPersistentContainer {
-        return MockPersistanceContainer().mockPersistentContainer
+        return MockPersistanceContainer.container.mockPersistentContainer
     }
 }
