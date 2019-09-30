@@ -152,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				0305D2562337D5E8005B4A4B /* Helpers */,
+				0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */,
 				0305D2522337D18E005B4A4B /* MockDataAccessObject.swift */,
 				0305D2592337DA00005B4A4B /* MockNetworkManager.swift */,
 			);
@@ -162,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				0305D24D2337D050005B4A4B /* MockPersistanceContainer.swift */,
-				0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */,
 				0305D2542337D219005B4A4B /* MockDataHelper.swift */,
 			);
 			path = Helpers;
