@@ -16,19 +16,46 @@ class MockDataHelper {
     
     static var mockPersistentContainer = MockPersistanceProvider().getPersistanceContainer()
     
-    public static  func getUsers(saveData: Bool = false) -> Users {
-        return readFromFile("users", saveData: saveData)!
+    public static func getUsers() -> Users {
+        return readFromFile("users")!
     }
     
-    public static  func getPosts(saveData: Bool = false) -> Posts {
-        return readFromFile("posts", saveData: saveData)!
+    public static func getPosts() -> Posts {
+        return readFromFile("posts")!
     }
 
-    public static  func getComments(saveData: Bool = false) -> Comments {
-        return readFromFile("comments", saveData: saveData)!
+    public static func getComments() -> Comments {
+        return readFromFile("comments")!
     }
     
-    private static  func readFromFile<T: Codable>(_ fileName: String, saveData: Bool = false) -> T? {
+    public static func getUsersLocal(saveData: Bool = false) -> UsersLocal {
+        var usersLocal: UsersLocal = []
+        getUsers().forEach { user in
+            usersLocal.append(UserLocal(id: user.id, name: user.name, username: user.username, email: user.email, address: AddressLocal(street: user.address.street, suite: user.address.suite, city: user.address.city, zipcode: user.address.zipcode, geo: GeoLocal(lat: user.address.geo.lat, lng: user.address.geo.lng, needSave: saveData, context: mockPersistentContainer.viewContext), needSave: saveData, context: mockPersistentContainer.viewContext), phone: user.phone, website: user.website, company: CompanyLocal(name: user.company.name, catchPhrase: user.company.catchPhrase, bs: user.company.bs, needSave: saveData, context: mockPersistentContainer.viewContext), needSave: saveData, context: mockPersistentContainer.viewContext))
+        }
+        if saveData { do { try mockPersistentContainer.viewContext.save() } catch {} }
+        return usersLocal
+    }
+    
+    public static func getPostsLocal(saveData: Bool = false) -> PostsLocal {
+        var postsLocal: PostsLocal = []
+        getPosts().forEach { post in
+            postsLocal.append(PostLocal(userId: post.userId, id: post.id, body: post.body, title: post.title, needSave: saveData, context: mockPersistentContainer.viewContext))
+        }
+        if saveData { do { try mockPersistentContainer.viewContext.save() } catch {} }
+        return postsLocal
+    }
+
+    public static func getCommentsLocal(saveData: Bool = false) -> CommentsLocal {
+        var commentsLocal: CommentsLocal = []
+        getComments().forEach { comment in
+            commentsLocal.append(CommentLocal(postId: comment.postId, id: comment.id, name: comment.name, email: comment.email, body: comment.body, needSave: saveData, context: mockPersistentContainer.viewContext))
+        }
+        if saveData { do { try mockPersistentContainer.viewContext.save() } catch {} }
+        return commentsLocal
+    }
+    
+    private static func readFromFile<T: Codable>(_ fileName: String) -> T? {
         
         let bundle = Bundle(for: type(of: MockDataHelper()))
         print("🚨 TEST Reading from file : \(fileName).json")
@@ -40,13 +67,7 @@ class MockDataHelper {
         
         do {
             let data = try Data(contentsOf: url)
-            let managedObjectContext = mockPersistentContainer.viewContext
-            let decoder = JSONDecoder()
-            decoder.userInfo[CodingUserInfoKey.managedObjectContext!] = managedObjectContext
-            let serialisedData = try decoder.decode(T.self, from: data)
-            if saveData {
-                try managedObjectContext.save()
-            }
+            let serialisedData = try JSONDecoder().decode(T.self, from: data)
             return serialisedData
         } catch {
             return nil

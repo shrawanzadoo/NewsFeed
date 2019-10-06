@@ -13,7 +13,7 @@ protocol DataAccessObject {
     func fetchUsers() -> Observable<Result<Users, Error>>
     func fetchPosts() -> Observable<Result<Posts, Error>>
     func fetchComments() -> Observable<Result<Comments, Error>>
-    func fetchUsersFromStorage() -> Users
-    func fetchPostsFromStorage() -> Posts
-    func fetchCommentsFromStorage() -> Comments
+    func fetchUsersFromStorage() -> UsersLocal
+    func fetchPostsFromStorage() -> PostsLocal
+    func fetchCommentsFromStorage() -> CommentsLocal
 }

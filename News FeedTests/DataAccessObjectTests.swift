@@ -51,17 +51,17 @@ class DataAccessObjectTests: XCTestCase {
     //MARK: Helpers
     
     func loadUsersIntoStorage() {
-        let users = MockDataHelper.getUsers(saveData: true)
+        let users = MockDataHelper.getUsersLocal(saveData: true)
         print("🚨 TEST users : \(users.count)")
     }
     
     func loadPostsIntoStorage() {
-        let posts: Posts = MockDataHelper.getPosts(saveData: true)
+        let posts = MockDataHelper.getPostsLocal(saveData: true)
         print("🚨 TEST posts : \(posts.count)")
     }
     
     func loadCommentsIntoStorage() {
-        let comments: Comments = MockDataHelper.getComments(saveData: true)
+        let comments = MockDataHelper.getCommentsLocal(saveData: true)
         print("🚨 TEST comments : \(comments.count)")
     }
 }

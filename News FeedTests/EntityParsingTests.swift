@@ -12,8 +12,6 @@ import CoreData
 
 class EntityParsingTests: XCTestCase {
     
-    lazy var mockPersistentContainer = MockPersistanceContainer().mockPersistentContainer
-
     func testUserParsing() {
         guard let users: Users = verifyParsing("users") else {
             XCTFail()
@@ -49,10 +47,7 @@ class EntityParsingTests: XCTestCase {
         
         do {
             let data = try Data(contentsOf: url)
-            let managedObjectContext = mockPersistentContainer.viewContext
-            let decoder = JSONDecoder()
-            decoder.userInfo[CodingUserInfoKey.managedObjectContext!] = managedObjectContext
-            let serialisedData = try decoder.decode(T.self, from: data)
+            let serialisedData = try JSONDecoder().decode(T.self, from: data)
             return serialisedData
         } catch {
             return nil

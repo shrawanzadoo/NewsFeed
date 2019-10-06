@@ -38,10 +38,10 @@ class DataAccessObjectImpl: DataAccessObject {
         return networkManager.fetchComments().asObservable()
     }
     
-    func fetchUsersFromStorage() -> Users {
-        var users: Users = []
+    func fetchUsersFromStorage() -> UsersLocal {
+        var users: UsersLocal = []
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let fetchRequest = NSFetchRequest<UserLocal>(entityName: "User")
         do {
             users = try managedContext.fetch(fetchRequest)
         } catch let error {
@@ -50,10 +50,10 @@ class DataAccessObjectImpl: DataAccessObject {
         return users
     }
     
-    func fetchPostsFromStorage() -> Posts {
-        var posts: Posts = []
+    func fetchPostsFromStorage() -> PostsLocal {
+        var posts: PostsLocal = []
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+        let fetchRequest = NSFetchRequest<PostLocal>(entityName: "Post")
         do {
             posts = try managedContext.fetch(fetchRequest)
         } catch let error {
@@ -62,10 +62,10 @@ class DataAccessObjectImpl: DataAccessObject {
         return posts
     }
     
-    func fetchCommentsFromStorage() -> Comments {
-        var comments: Comments = []
+    func fetchCommentsFromStorage() -> CommentsLocal {
+        var comments: CommentsLocal = []
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Comment>(entityName: "Comment")
+        let fetchRequest = NSFetchRequest<CommentLocal>(entityName: "Comment")
         do {
             comments = try managedContext.fetch(fetchRequest)
         } catch let error {
@@ -88,7 +88,7 @@ class DataAccessObjectImpl: DataAccessObject {
     private func clearPostsFromStorage() {
         
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+        let fetchRequest = NSFetchRequest<PostLocal>(entityName: "Post")
         managedContext.performAndWait {
             do {
                 let posts = try managedContext.fetch(fetchRequest)
@@ -104,7 +104,7 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearUsers() {
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let fetchRequest = NSFetchRequest<UserLocal>(entityName: "User")
         managedContext.performAndWait {
             do {
                 let users = try managedContext.fetch(fetchRequest)
@@ -120,7 +120,7 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearAddress() {
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Address>(entityName: "Address")
+        let fetchRequest = NSFetchRequest<AddressLocal>(entityName: "Address")
         managedContext.performAndWait {
             do {
                 let addresses = try managedContext.fetch(fetchRequest)
@@ -136,7 +136,7 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearGeo() {
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Geo>(entityName: "Geo")
+        let fetchRequest = NSFetchRequest<GeoLocal>(entityName: "Geo")
         managedContext.performAndWait {
             do {
                 let locations = try managedContext.fetch(fetchRequest)
@@ -152,7 +152,7 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearCompany() {
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+        let fetchRequest = NSFetchRequest<CompanyLocal>(entityName: "Company")
         managedContext.performAndWait {
             do {
                 let companies = try managedContext.fetch(fetchRequest)
@@ -168,7 +168,7 @@ class DataAccessObjectImpl: DataAccessObject {
     
     private func clearCommentsFromStorage() {
         let managedContext = self.persistanceProvider.getPersistanceContainer().newBackgroundContext()
-        let fetchRequest = NSFetchRequest<Comment>(entityName: "Comment")
+        let fetchRequest = NSFetchRequest<CommentLocal>(entityName: "Comment")
         managedContext.performAndWait {
             do {
                 let comments = try managedContext.fetch(fetchRequest)

@@ -38,24 +38,24 @@ class MockDataAccessObject: DataAccessObject {
     }
     
     var fetchUsersFromStorageCount = 0
-    var fetchUsersFromStorageReturns = MockDataHelper.getUsers()
-    func fetchUsersFromStorage() -> Users {
+    var fetchUsersFromStorageReturns = MockDataHelper.getUsersLocal()
+    func fetchUsersFromStorage() -> UsersLocal {
         fetchUsersFromStorageCount += 1
         return fetchUsersFromStorageReturns
     }
     
     
     var fetchPostsFromStorageCount = 0
-    var fetchPostsFromStorageReturns = MockDataHelper.getPosts()
-    func fetchPostsFromStorage() -> Posts {
+    var fetchPostsFromStorageReturns = MockDataHelper.getPostsLocal()
+    func fetchPostsFromStorage() -> PostsLocal {
         fetchPostsFromStorageCount += 1
         return fetchPostsFromStorageReturns
     }
     
     
     var fetchCommentsFromStorageCount = 0
-    var fetchCommentsFromStorageReturns = MockDataHelper.getComments()
-    func fetchCommentsFromStorage() -> Comments {
+    var fetchCommentsFromStorageReturns = MockDataHelper.getCommentsLocal()
+    func fetchCommentsFromStorage() -> CommentsLocal {
         fetchCommentsFromStorageCount += 1
         return fetchCommentsFromStorageReturns
     }
