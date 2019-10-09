@@ -11,9 +11,9 @@ import RxSwift
 
 class PostsViewController: UIViewController {
 
-    var posts: Posts?
-    var users: Users?
-    var comments: Comments?
+    var posts: PostsRemote?
+    var users: UsersRemote?
+    var comments: CommentsRemote?
     
     override func viewDidLoad() {
         super.viewDidLoad()

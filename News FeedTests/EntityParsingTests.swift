@@ -13,7 +13,7 @@ import CoreData
 class EntityParsingTests: XCTestCase {
     
     func testUserParsing() {
-        guard let users: Users = verifyParsing("users") else {
+        guard let users: UsersRemote = verifyParsing("users") else {
             XCTFail()
             return
         }
@@ -21,7 +21,7 @@ class EntityParsingTests: XCTestCase {
     }
     
     func testCommentsParsing() {
-        guard let comments: Comments = verifyParsing("comments") else {
+        guard let comments: CommentsRemote = verifyParsing("comments") else {
             XCTFail()
             return
         }
@@ -29,7 +29,7 @@ class EntityParsingTests: XCTestCase {
     }
     
     func testPostsParsing() {
-        guard let posts: Posts = verifyParsing("posts") else {
+        guard let posts: PostsRemote = verifyParsing("posts") else {
             XCTFail()
             return
         }

@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 protocol DataAccessObject {
-    func fetchUsers() -> Observable<Result<Users, Error>>
-    func fetchPosts() -> Observable<Result<Posts, Error>>
-    func fetchComments() -> Observable<Result<Comments, Error>>
+    func fetchUsers() -> Observable<Result<UsersRemote, Error>>
+    func fetchPosts() -> Observable<Result<PostsRemote, Error>>
+    func fetchComments() -> Observable<Result<CommentsRemote, Error>>
     func fetchUsersFromStorage() -> UsersLocal
     func fetchPostsFromStorage() -> PostsLocal
     func fetchCommentsFromStorage() -> CommentsLocal

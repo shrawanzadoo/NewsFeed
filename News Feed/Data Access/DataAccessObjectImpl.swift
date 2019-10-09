@@ -26,15 +26,15 @@ class DataAccessObjectImpl: DataAccessObject {
 //        clearDataFromStorage()
     }
     
-    func fetchUsers() -> Observable<Result<Users, Error>> {
+    func fetchUsers() -> Observable<Result<UsersRemote, Error>> {
         return networkManager.fetchUsers().asObservable()
     }
     
-    func fetchPosts() -> Observable<Result<Posts, Error>> {
+    func fetchPosts() -> Observable<Result<PostsRemote, Error>> {
         return networkManager.fetchPosts().asObservable()
     }
     
-    func fetchComments() -> Observable<Result<Comments, Error>> {
+    func fetchComments() -> Observable<Result<CommentsRemote, Error>> {
         return networkManager.fetchComments().asObservable()
     }
     

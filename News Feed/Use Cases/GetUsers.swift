@@ -14,17 +14,16 @@ class GetUsers: UseCase {
     typealias Q = String
     typealias T = Result<Users, Error>
     
-    let usersDataManager: UsersDataManager
+    let usersRepository: UsersRepository
     
-    init(usersDataManager: UsersDataManager = UsersDataManagerImpl()) {
-        self.usersDataManager = usersDataManager
+    init(usersRepository: UsersRepository = UsersRepositoryImpl()) {
+        self.usersRepository = usersRepository
     }
     
-    // imagine these posts will be for a user
-    // so we will need to pass in the user id/auth/session
+    // imagine these users will be for a user
+    // so we will need to pass in the user user id/auth/session
     // which is not used now
     func execute(requestValues: Q) -> Observable<T> {
-        return usersDataManager
-            .fetchUsers().asObservable()
+        return usersRepository.getUsers()
     }
 }

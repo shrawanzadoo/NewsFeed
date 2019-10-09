@@ -23,17 +23,17 @@ class NetworkManagerImpl: NetworkManager {
         self.commentsDataManager = commentsDataManager
     }
     
-    func fetchUsers() -> Single<Result<Users, Error>> {
+    func fetchUsers() -> Single<Result<UsersRemote, Error>> {
         return usersDataManager
             .fetchUsers()
     }
     
-    func fetchPosts() -> Single<Result<Posts, Error>> {
+    func fetchPosts() -> Single<Result<PostsRemote, Error>> {
         return postsDataManager
             .fetchPosts()
     }
     
-    func fetchComments() -> Single<Result<Comments, Error>> {
+    func fetchComments() -> Single<Result<CommentsRemote, Error>> {
         return commentsDataManager
             .fetchComments()
     }

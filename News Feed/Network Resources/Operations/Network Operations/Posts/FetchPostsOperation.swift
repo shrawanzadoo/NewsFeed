@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class FetchPostsOperation: ConcurrentOperation<Posts> {
+class FetchPostsOperation: ConcurrentOperation<PostsRemote> {
     
     private let session: URLSession
     private let requestFactory: PostsURLRequestFactory
@@ -47,7 +47,7 @@ class FetchPostsOperation: ConcurrentOperation<Posts> {
                 let decoder = JSONDecoder()
                 let managedContext = self.persistentContainer.viewContext
                 decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedContext
-                let posts = try decoder.decode(Posts.self, from: data)
+                let posts = try decoder.decode(PostsRemote.self, from: data)
                 
                 try managedContext.save()
                 self.complete(result: .success(posts))

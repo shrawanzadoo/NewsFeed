@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol NetworkManager {
-    func fetchUsers() -> Single<Result<Users, Error>>
-    func fetchPosts() -> Single<Result<Posts, Error>>
-    func fetchComments() -> Single<Result<Comments, Error>>
+    func fetchUsers() -> Single<Result<UsersRemote, Error>>
+    func fetchPosts() -> Single<Result<PostsRemote, Error>>
+    func fetchComments() -> Single<Result<CommentsRemote, Error>>
 }

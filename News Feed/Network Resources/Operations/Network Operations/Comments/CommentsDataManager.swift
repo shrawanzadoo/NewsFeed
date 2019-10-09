@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol CommentsDataManager {
-    func fetchComments() -> Single<Result<Comments, Error>>
+    func fetchComments() -> Single<Result<CommentsRemote, Error>>
 }
 
 class CommentsDataManagerImpl: CommentsDataManager {
@@ -24,7 +24,7 @@ class CommentsDataManagerImpl: CommentsDataManager {
         self.persistanceProvider = persistanceProvider
     }
     
-    func fetchComments() -> Single<Result<Comments, Error>> {
+    func fetchComments() -> Single<Result<CommentsRemote, Error>> {
         return Single.create { emitter in
             let operation = FetchCommentsOperation(self.persistanceProvider.getPersistanceContainer())
             operation.completionHandler = { result in

@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UsersDataManager {
-    func fetchUsers() -> Single<Result<Users, Error>>
+    func fetchUsers() -> Single<Result<UsersRemote, Error>>
 }
 
 class UsersDataManagerImpl: UsersDataManager {
@@ -24,7 +24,7 @@ class UsersDataManagerImpl: UsersDataManager {
         self.persistanceProvider = persistanceProvider
     }
     
-    func fetchUsers() -> Single<Result<Users, Error>> {
+    func fetchUsers() -> Single<Result<UsersRemote, Error>> {
         return Single.create { emitter in
             let operation = FetchUsersOperation(self.persistanceProvider.getPersistanceContainer())
             operation.completionHandler = { result in

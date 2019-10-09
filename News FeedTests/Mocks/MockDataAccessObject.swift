@@ -16,7 +16,7 @@ class MockDataAccessObject: DataAccessObject {
     
     var fetchUsersCount = 0
     var fetchUsersReturns = MockDataHelper.getUsers()
-    func fetchUsers() -> Observable<Result<Users, Error>> {
+    func fetchUsers() -> Observable<Result<UsersRemote, Error>> {
         fetchUsersCount += 1
         return Observable.from(optional: .success(fetchUsersReturns))
     }
@@ -24,7 +24,7 @@ class MockDataAccessObject: DataAccessObject {
     
     var fetchPostsCount = 0
     var fetchPostsReturns = MockDataHelper.getPosts()
-    func fetchPosts() -> Observable<Result<Posts, Error>> {
+    func fetchPosts() -> Observable<Result<PostsRemote, Error>> {
         fetchPostsCount += 1
         return Observable.from(optional: .success(fetchPostsReturns))
     }
@@ -32,7 +32,7 @@ class MockDataAccessObject: DataAccessObject {
     
     var fetchCommentsCount = 0
     var fetchCommentsReturns = MockDataHelper.getComments()
-    func fetchComments() -> Observable<Result<Comments, Error>> {
+    func fetchComments() -> Observable<Result<CommentsRemote, Error>> {
         fetchCommentsCount += 1
         return Observable.from(optional: .success(fetchCommentsReturns))
     }

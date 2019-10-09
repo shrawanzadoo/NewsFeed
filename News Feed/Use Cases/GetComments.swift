@@ -14,17 +14,16 @@ class GetComments: UseCase {
     typealias Q = String
     typealias T = Result<Comments, Error>
     
-    let commentsDataManager: CommentsDataManager
+    let commentsRepository: CommentsRepository
     
-    init(usersDataManager: CommentsDataManager = CommentsDataManagerImpl()) {
-        self.commentsDataManager = usersDataManager
+    init(commentsRepository: CommentsRepository = CommentsRepositoryImpl()) {
+        self.commentsRepository = commentsRepository
     }
     
-    // imagine these posts will be for a user
+    // imagine these comments will be for a user
     // so we will need to pass in the user user id/auth/session
     // which is not used now
     func execute(requestValues: Q) -> Observable<T> {
-        return commentsDataManager
-            .fetchComments().asObservable()
+        return commentsRepository.getComments()
     }
 }

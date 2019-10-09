@@ -14,17 +14,16 @@ class GetPosts: UseCase {
     typealias Q = String
     typealias T = Result<Posts, Error>
     
-    let postsDataManager: PostsDataManager
+    let postsRepository: PostsRepository
     
-    init(postsDataManager: PostsDataManager = PostsDataManagerImpl()) {
-        self.postsDataManager = postsDataManager
+    init(postsRepository: PostsRepository = PostsRepositoryImpl()) {
+        self.postsRepository = postsRepository
     }
     
     // imagine these posts will be for a user
     // so we will need to pass in the user user id/auth/session
     // which is not used now
     func execute(requestValues: Q) -> Observable<T> {
-        return postsDataManager
-            .fetchPosts().asObservable()
+        return postsRepository.getPosts()
     }
 }

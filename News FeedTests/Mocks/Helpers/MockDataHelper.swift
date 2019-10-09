@@ -16,15 +16,15 @@ class MockDataHelper {
     
     static var mockPersistentContainer = MockPersistanceProvider().getPersistanceContainer()
     
-    public static func getUsers() -> Users {
+    public static func getUsers() -> UsersRemote {
         return readFromFile("users")!
     }
     
-    public static func getPosts() -> Posts {
+    public static func getPosts() -> PostsRemote {
         return readFromFile("posts")!
     }
 
-    public static func getComments() -> Comments {
+    public static func getComments() -> CommentsRemote {
         return readFromFile("comments")!
     }
     

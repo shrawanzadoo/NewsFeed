@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class FetchCommentsOperation: ConcurrentOperation<Comments> {
+class FetchCommentsOperation: ConcurrentOperation<CommentsRemote> {
     
     private let session: URLSession
     private let requestFactory: CommentsURLRequestFactory
@@ -46,7 +46,7 @@ class FetchCommentsOperation: ConcurrentOperation<Comments> {
                 let decoder = JSONDecoder()
                 let managedContext = self.persistentContainer.viewContext
                 decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedContext
-                let comments = try decoder.decode(Comments.self, from: data)
+                let comments = try decoder.decode(CommentsRemote.self, from: data)
                 
                 try managedContext.save()
                 self.complete(result: .success(comments))

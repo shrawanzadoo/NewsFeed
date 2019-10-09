@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias Comments = [Comment]
+typealias CommentsRemote = [CommentRemote]
 
-struct Comment: Codable {
+struct CommentRemote: Codable {
     
     enum CodingKeys: String, CodingKey {
         case postId
