@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		0305D24E2337D050005B4A4B /* MockPersistanceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D24D2337D050005B4A4B /* MockPersistanceContainer.swift */; };
 		0305D2502337D0FA005B4A4B /* MockPersistanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */; };
-		0305D2532337D18E005B4A4B /* MockDataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D2522337D18E005B4A4B /* MockDataAccessObject.swift */; };
 		0305D2552337D219005B4A4B /* MockDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D2542337D219005B4A4B /* MockDataHelper.swift */; };
-		0305D2582337D7D5005B4A4B /* DataAccessObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D2572337D7D5005B4A4B /* DataAccessObjectTests.swift */; };
-		0305D25A2337DA00005B4A4B /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305D2592337DA00005B4A4B /* MockNetworkManager.swift */; };
 		0313025C22D5314C00067B5B /* PostRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313025B22D5314C00067B5B /* PostRemote.swift */; };
 		031E413522D3C3CE000593FE /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E413422D3C3CE000593FE /* ConcurrentOperation.swift */; };
 		03208FC322F842B60081522D /* EntityParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEA39822D2557E00EDEBE9 /* EntityParsingTests.swift */; };
@@ -73,6 +70,16 @@
 		03DC7A3E234E7BEE00121737 /* CommentsDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A3D234E7BEE00121737 /* CommentsDataSourceRemote.swift */; };
 		03DC7A40234E7C8000121737 /* PostsDataSourceLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A3F234E7C8000121737 /* PostsDataSourceLocal.swift */; };
 		03DC7A42234E7C9D00121737 /* PostsDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A41234E7C9D00121737 /* PostsDataSourceRemote.swift */; };
+		03DC7A44234E7D6400121737 /* MockUsersDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A43234E7D6400121737 /* MockUsersDataManager.swift */; };
+		03DC7A46234E7F4000121737 /* MockCommentsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A45234E7F4000121737 /* MockCommentsDataManager.swift */; };
+		03DC7A48234E7F5E00121737 /* MockPostsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A47234E7F5E00121737 /* MockPostsDataManager.swift */; };
+		03DC7A4D234E80F800121737 /* RemoteUsersDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A4C234E80F800121737 /* RemoteUsersDataSourceTests.swift */; };
+		03DC7A54234E836400121737 /* MockSchedulerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A53234E836400121737 /* MockSchedulerProvider.swift */; };
+		03DC7A56234E85DF00121737 /* RemoteCommentsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A55234E85DF00121737 /* RemoteCommentsDataSourceTests.swift */; };
+		03DC7A58234E863800121737 /* RemotePostsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A57234E863800121737 /* RemotePostsDataSourceTests.swift */; };
+		03DC7A5D234E86E300121737 /* LocalPostsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A5C234E86E300121737 /* LocalPostsDataSourceTests.swift */; };
+		03DC7A5F234E87C100121737 /* LocalUsersDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A5E234E87C100121737 /* LocalUsersDataSourceTests.swift */; };
+		03DC7A61234E87F900121737 /* LocalCommentsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */; };
 		32C0B603A29C4FB506EF0200 /* libPods-News FeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D98A0F6FD1697608AD8142 /* libPods-News FeedTests.a */; };
 		DFB1643FFA2C166CE448FF6B /* libPods-News Feed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */; };
 /* End PBXBuildFile section */
@@ -90,10 +97,7 @@
 /* Begin PBXFileReference section */
 		0305D24D2337D050005B4A4B /* MockPersistanceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistanceContainer.swift; sourceTree = "<group>"; };
 		0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistanceProvider.swift; sourceTree = "<group>"; };
-		0305D2522337D18E005B4A4B /* MockDataAccessObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataAccessObject.swift; sourceTree = "<group>"; };
 		0305D2542337D219005B4A4B /* MockDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataHelper.swift; sourceTree = "<group>"; };
-		0305D2572337D7D5005B4A4B /* DataAccessObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessObjectTests.swift; sourceTree = "<group>"; };
-		0305D2592337DA00005B4A4B /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		0313025B22D5314C00067B5B /* PostRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemote.swift; sourceTree = "<group>"; };
 		031E413422D3C3CE000593FE /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		03208FC422F845E60081522D /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
@@ -158,6 +162,16 @@
 		03DC7A3D234E7BEE00121737 /* CommentsDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSourceRemote.swift; sourceTree = "<group>"; };
 		03DC7A3F234E7C8000121737 /* PostsDataSourceLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataSourceLocal.swift; sourceTree = "<group>"; };
 		03DC7A41234E7C9D00121737 /* PostsDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataSourceRemote.swift; sourceTree = "<group>"; };
+		03DC7A43234E7D6400121737 /* MockUsersDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersDataManager.swift; sourceTree = "<group>"; };
+		03DC7A45234E7F4000121737 /* MockCommentsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCommentsDataManager.swift; sourceTree = "<group>"; };
+		03DC7A47234E7F5E00121737 /* MockPostsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPostsDataManager.swift; sourceTree = "<group>"; };
+		03DC7A4C234E80F800121737 /* RemoteUsersDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteUsersDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A53234E836400121737 /* MockSchedulerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSchedulerProvider.swift; sourceTree = "<group>"; };
+		03DC7A55234E85DF00121737 /* RemoteCommentsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCommentsDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A57234E863800121737 /* RemotePostsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemotePostsDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A5C234E86E300121737 /* LocalPostsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPostsDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A5E234E87C100121737 /* LocalUsersDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUsersDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCommentsDataSourceTests.swift; sourceTree = "<group>"; };
 		1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-News Feed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20458C0A0518BF63EC7934EC /* Pods-News FeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.release.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		240B7F0821CC1E863D306BCE /* Pods-News FeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.debug.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,8 +215,7 @@
 			children = (
 				0305D2562337D5E8005B4A4B /* Helpers */,
 				0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */,
-				0305D2522337D18E005B4A4B /* MockDataAccessObject.swift */,
-				0305D2592337DA00005B4A4B /* MockNetworkManager.swift */,
+				03DC7A4A234E7FB100121737 /* Data Managers */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -480,10 +493,11 @@
 		03CEA39722D2557E00EDEBE9 /* News FeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				03DC7A52234E835D00121737 /* Services */,
+				03DC7A4B234E80E400121737 /* Data Source Tests */,
 				0305D24C2337D01C005B4A4B /* Stored responses */,
 				0305D2512337D15C005B4A4B /* Mocks */,
 				03CEA39822D2557E00EDEBE9 /* EntityParsingTests.swift */,
-				0305D2572337D7D5005B4A4B /* DataAccessObjectTests.swift */,
 				03CEA39A22D2557E00EDEBE9 /* Info.plist */,
 			);
 			path = "News FeedTests";
@@ -534,6 +548,53 @@
 				03DC7A39234E7B8A00121737 /* UsersDataSourceRemote.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		03DC7A4A234E7FB100121737 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A43234E7D6400121737 /* MockUsersDataManager.swift */,
+				03DC7A47234E7F5E00121737 /* MockPostsDataManager.swift */,
+				03DC7A45234E7F4000121737 /* MockCommentsDataManager.swift */,
+			);
+			path = "Data Managers";
+			sourceTree = "<group>";
+		};
+		03DC7A4B234E80E400121737 /* Data Source Tests */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A5B234E86AA00121737 /* Local */,
+				03DC7A5A234E86A500121737 /* Remote */,
+			);
+			path = "Data Source Tests";
+			sourceTree = "<group>";
+		};
+		03DC7A52234E835D00121737 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A53234E836400121737 /* MockSchedulerProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		03DC7A5A234E86A500121737 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A4C234E80F800121737 /* RemoteUsersDataSourceTests.swift */,
+				03DC7A55234E85DF00121737 /* RemoteCommentsDataSourceTests.swift */,
+				03DC7A57234E863800121737 /* RemotePostsDataSourceTests.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		03DC7A5B234E86AA00121737 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A5C234E86E300121737 /* LocalPostsDataSourceTests.swift */,
+				03DC7A5E234E87C100121737 /* LocalUsersDataSourceTests.swift */,
+				03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		5CE958DDBE72B9B223D7FF7F /* Pods */ = {
@@ -769,12 +830,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0305D2582337D7D5005B4A4B /* DataAccessObjectTests.swift in Sources */,
+				03DC7A5F234E87C100121737 /* LocalUsersDataSourceTests.swift in Sources */,
 				0305D2502337D0FA005B4A4B /* MockPersistanceProvider.swift in Sources */,
+				03DC7A4D234E80F800121737 /* RemoteUsersDataSourceTests.swift in Sources */,
+				03DC7A5D234E86E300121737 /* LocalPostsDataSourceTests.swift in Sources */,
 				03208FC322F842B60081522D /* EntityParsingTests.swift in Sources */,
-				0305D2532337D18E005B4A4B /* MockDataAccessObject.swift in Sources */,
-				0305D25A2337DA00005B4A4B /* MockNetworkManager.swift in Sources */,
+				03DC7A58234E863800121737 /* RemotePostsDataSourceTests.swift in Sources */,
+				03DC7A48234E7F5E00121737 /* MockPostsDataManager.swift in Sources */,
+				03DC7A54234E836400121737 /* MockSchedulerProvider.swift in Sources */,
 				0305D24E2337D050005B4A4B /* MockPersistanceContainer.swift in Sources */,
+				03DC7A46234E7F4000121737 /* MockCommentsDataManager.swift in Sources */,
+				03DC7A56234E85DF00121737 /* RemoteCommentsDataSourceTests.swift in Sources */,
+				03DC7A44234E7D6400121737 /* MockUsersDataManager.swift in Sources */,
+				03DC7A61234E87F900121737 /* LocalCommentsDataSourceTests.swift in Sources */,
 				0305D2552337D219005B4A4B /* MockDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
