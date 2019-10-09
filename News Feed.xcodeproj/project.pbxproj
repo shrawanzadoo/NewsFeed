@@ -80,6 +80,12 @@
 		03DC7A5D234E86E300121737 /* LocalPostsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A5C234E86E300121737 /* LocalPostsDataSourceTests.swift */; };
 		03DC7A5F234E87C100121737 /* LocalUsersDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A5E234E87C100121737 /* LocalUsersDataSourceTests.swift */; };
 		03DC7A61234E87F900121737 /* LocalCommentsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */; };
+		03DC7A65234E88BD00121737 /* PostsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A64234E88BD00121737 /* PostsRepositoryTests.swift */; };
+		03DC7A68234E893300121737 /* MockUsersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A67234E893300121737 /* MockUsersDataSource.swift */; };
+		03DC7A6A234E89C200121737 /* MockPostsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A69234E89C200121737 /* MockPostsDataSource.swift */; };
+		03DC7A6C234E89CB00121737 /* MockCommentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A6B234E89CB00121737 /* MockCommentsDataSource.swift */; };
+		03DC7A6E234E8AC200121737 /* UsersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A6D234E8AC200121737 /* UsersRepositoryTests.swift */; };
+		03DC7A70234E8AE100121737 /* CommentsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A6F234E8AE100121737 /* CommentsRepositoryTests.swift */; };
 		32C0B603A29C4FB506EF0200 /* libPods-News FeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D98A0F6FD1697608AD8142 /* libPods-News FeedTests.a */; };
 		DFB1643FFA2C166CE448FF6B /* libPods-News Feed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */; };
 /* End PBXBuildFile section */
@@ -172,6 +178,12 @@
 		03DC7A5C234E86E300121737 /* LocalPostsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPostsDataSourceTests.swift; sourceTree = "<group>"; };
 		03DC7A5E234E87C100121737 /* LocalUsersDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUsersDataSourceTests.swift; sourceTree = "<group>"; };
 		03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCommentsDataSourceTests.swift; sourceTree = "<group>"; };
+		03DC7A64234E88BD00121737 /* PostsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepositoryTests.swift; sourceTree = "<group>"; };
+		03DC7A67234E893300121737 /* MockUsersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersDataSource.swift; sourceTree = "<group>"; };
+		03DC7A69234E89C200121737 /* MockPostsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPostsDataSource.swift; sourceTree = "<group>"; };
+		03DC7A6B234E89CB00121737 /* MockCommentsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCommentsDataSource.swift; sourceTree = "<group>"; };
+		03DC7A6D234E8AC200121737 /* UsersRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersRepositoryTests.swift; sourceTree = "<group>"; };
+		03DC7A6F234E8AE100121737 /* CommentsRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsRepositoryTests.swift; sourceTree = "<group>"; };
 		1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-News Feed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20458C0A0518BF63EC7934EC /* Pods-News FeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.release.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		240B7F0821CC1E863D306BCE /* Pods-News FeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.debug.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +225,7 @@
 		0305D2512337D15C005B4A4B /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				03DC7A66234E891800121737 /* Data Source */,
 				0305D2562337D5E8005B4A4B /* Helpers */,
 				0305D24F2337D0FA005B4A4B /* MockPersistanceProvider.swift */,
 				03DC7A4A234E7FB100121737 /* Data Managers */,
@@ -493,6 +506,7 @@
 		03CEA39722D2557E00EDEBE9 /* News FeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				03DC7A62234E888500121737 /* Repository Tests */,
 				03DC7A52234E835D00121737 /* Services */,
 				03DC7A4B234E80E400121737 /* Data Source Tests */,
 				0305D24C2337D01C005B4A4B /* Stored responses */,
@@ -595,6 +609,26 @@
 				03DC7A60234E87F900121737 /* LocalCommentsDataSourceTests.swift */,
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		03DC7A62234E888500121737 /* Repository Tests */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A64234E88BD00121737 /* PostsRepositoryTests.swift */,
+				03DC7A6D234E8AC200121737 /* UsersRepositoryTests.swift */,
+				03DC7A6F234E8AE100121737 /* CommentsRepositoryTests.swift */,
+			);
+			path = "Repository Tests";
+			sourceTree = "<group>";
+		};
+		03DC7A66234E891800121737 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A67234E893300121737 /* MockUsersDataSource.swift */,
+				03DC7A69234E89C200121737 /* MockPostsDataSource.swift */,
+				03DC7A6B234E89CB00121737 /* MockCommentsDataSource.swift */,
+			);
+			path = "Data Source";
 			sourceTree = "<group>";
 		};
 		5CE958DDBE72B9B223D7FF7F /* Pods */ = {
@@ -830,17 +864,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DC7A6C234E89CB00121737 /* MockCommentsDataSource.swift in Sources */,
 				03DC7A5F234E87C100121737 /* LocalUsersDataSourceTests.swift in Sources */,
 				0305D2502337D0FA005B4A4B /* MockPersistanceProvider.swift in Sources */,
 				03DC7A4D234E80F800121737 /* RemoteUsersDataSourceTests.swift in Sources */,
 				03DC7A5D234E86E300121737 /* LocalPostsDataSourceTests.swift in Sources */,
 				03208FC322F842B60081522D /* EntityParsingTests.swift in Sources */,
 				03DC7A58234E863800121737 /* RemotePostsDataSourceTests.swift in Sources */,
+				03DC7A6E234E8AC200121737 /* UsersRepositoryTests.swift in Sources */,
 				03DC7A48234E7F5E00121737 /* MockPostsDataManager.swift in Sources */,
+				03DC7A70234E8AE100121737 /* CommentsRepositoryTests.swift in Sources */,
 				03DC7A54234E836400121737 /* MockSchedulerProvider.swift in Sources */,
 				0305D24E2337D050005B4A4B /* MockPersistanceContainer.swift in Sources */,
 				03DC7A46234E7F4000121737 /* MockCommentsDataManager.swift in Sources */,
+				03DC7A6A234E89C200121737 /* MockPostsDataSource.swift in Sources */,
 				03DC7A56234E85DF00121737 /* RemoteCommentsDataSourceTests.swift in Sources */,
+				03DC7A68234E893300121737 /* MockUsersDataSource.swift in Sources */,
+				03DC7A65234E88BD00121737 /* PostsRepositoryTests.swift in Sources */,
 				03DC7A44234E7D6400121737 /* MockUsersDataManager.swift in Sources */,
 				03DC7A61234E87F900121737 /* LocalCommentsDataSourceTests.swift in Sources */,
 				0305D2552337D219005B4A4B /* MockDataHelper.swift in Sources */,
