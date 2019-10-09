@@ -67,6 +67,12 @@
 		03DC7A2F234E76E700121737 /* UsersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A2E234E76E700121737 /* UsersDataSource.swift */; };
 		03DC7A31234E78CD00121737 /* CommentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A30234E78CD00121737 /* CommentsDataSource.swift */; };
 		03DC7A33234E796D00121737 /* CommentsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A32234E796D00121737 /* CommentsRepository.swift */; };
+		03DC7A38234E7B6700121737 /* UsersDataSourceLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A37234E7B6700121737 /* UsersDataSourceLocal.swift */; };
+		03DC7A3A234E7B8A00121737 /* UsersDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A39234E7B8A00121737 /* UsersDataSourceRemote.swift */; };
+		03DC7A3C234E7BC100121737 /* CommentsDataSourceLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A3B234E7BC100121737 /* CommentsDataSourceLocal.swift */; };
+		03DC7A3E234E7BEE00121737 /* CommentsDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A3D234E7BEE00121737 /* CommentsDataSourceRemote.swift */; };
+		03DC7A40234E7C8000121737 /* PostsDataSourceLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A3F234E7C8000121737 /* PostsDataSourceLocal.swift */; };
+		03DC7A42234E7C9D00121737 /* PostsDataSourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC7A41234E7C9D00121737 /* PostsDataSourceRemote.swift */; };
 		32C0B603A29C4FB506EF0200 /* libPods-News FeedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D98A0F6FD1697608AD8142 /* libPods-News FeedTests.a */; };
 		DFB1643FFA2C166CE448FF6B /* libPods-News Feed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */; };
 /* End PBXBuildFile section */
@@ -146,6 +152,12 @@
 		03DC7A2E234E76E700121737 /* UsersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataSource.swift; sourceTree = "<group>"; };
 		03DC7A30234E78CD00121737 /* CommentsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsDataSource.swift; sourceTree = "<group>"; };
 		03DC7A32234E796D00121737 /* CommentsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsRepository.swift; sourceTree = "<group>"; };
+		03DC7A37234E7B6700121737 /* UsersDataSourceLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataSourceLocal.swift; sourceTree = "<group>"; };
+		03DC7A39234E7B8A00121737 /* UsersDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataSourceRemote.swift; sourceTree = "<group>"; };
+		03DC7A3B234E7BC100121737 /* CommentsDataSourceLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSourceLocal.swift; sourceTree = "<group>"; };
+		03DC7A3D234E7BEE00121737 /* CommentsDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSourceRemote.swift; sourceTree = "<group>"; };
+		03DC7A3F234E7C8000121737 /* PostsDataSourceLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataSourceLocal.swift; sourceTree = "<group>"; };
+		03DC7A41234E7C9D00121737 /* PostsDataSourceRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataSourceRemote.swift; sourceTree = "<group>"; };
 		1079DEE0238681E23FA6A8BA /* libPods-News Feed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-News Feed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20458C0A0518BF63EC7934EC /* Pods-News FeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.release.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		240B7F0821CC1E863D306BCE /* Pods-News FeedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News FeedTests.debug.xcconfig"; path = "Target Support Files/Pods-News FeedTests/Pods-News FeedTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,9 +261,9 @@
 		035D0A4E234D30BB002FA542 /* Data Source */ = {
 			isa = PBXGroup;
 			children = (
-				035D0A4F234D30C7002FA542 /* PostsDataSource.swift */,
-				03DC7A2E234E76E700121737 /* UsersDataSource.swift */,
-				03DC7A30234E78CD00121737 /* CommentsDataSource.swift */,
+				03DC7A36234E7B5000121737 /* Users */,
+				03DC7A35234E7B4900121737 /* Comments */,
+				03DC7A34234E7B3A00121737 /* Posts */,
 			);
 			path = "Data Source";
 			sourceTree = "<group>";
@@ -494,6 +506,36 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		03DC7A34234E7B3A00121737 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				035D0A4F234D30C7002FA542 /* PostsDataSource.swift */,
+				03DC7A3F234E7C8000121737 /* PostsDataSourceLocal.swift */,
+				03DC7A41234E7C9D00121737 /* PostsDataSourceRemote.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		03DC7A35234E7B4900121737 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A30234E78CD00121737 /* CommentsDataSource.swift */,
+				03DC7A3B234E7BC100121737 /* CommentsDataSourceLocal.swift */,
+				03DC7A3D234E7BEE00121737 /* CommentsDataSourceRemote.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		03DC7A36234E7B5000121737 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				03DC7A2E234E76E700121737 /* UsersDataSource.swift */,
+				03DC7A37234E7B6700121737 /* UsersDataSourceLocal.swift */,
+				03DC7A39234E7B8A00121737 /* UsersDataSourceRemote.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		5CE958DDBE72B9B223D7FF7F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DC7A3C234E7BC100121737 /* CommentsDataSourceLocal.swift in Sources */,
 				038E86CE234A29A60083F4E1 /* GetPosts.swift in Sources */,
 				03208FD322F9DBA60081522D /* NetworkManagerImpl.swift in Sources */,
 				03208FD622F9F3E10081522D /* PersistanceProvider.swift in Sources */,
@@ -690,6 +733,7 @@
 				0378459D22E378A2005B33FC /* CommentRemote.swift in Sources */,
 				035D0A4D234D2F2F002FA542 /* User.swift in Sources */,
 				035D0A49234D2F1B002FA542 /* Post.swift in Sources */,
+				03DC7A42234E7C9D00121737 /* PostsDataSourceRemote.swift in Sources */,
 				038E86D4234A2E190083F4E1 /* GetComments.swift in Sources */,
 				03B26D0722DE5E0700B48720 /* PostsURLRequestFactory.swift in Sources */,
 				03DC7A31234E78CD00121737 /* CommentsDataSource.swift in Sources */,
@@ -709,9 +753,13 @@
 				038E86E6234A3FCF0083F4E1 /* PostLocal.swift in Sources */,
 				03CEA3A422D257E300EDEBE9 /* RootNavigationController.swift in Sources */,
 				037D63A82300A7CD008C8F76 /* CoreDataManager.swift in Sources */,
+				03DC7A3A234E7B8A00121737 /* UsersDataSourceRemote.swift in Sources */,
+				03DC7A3E234E7BEE00121737 /* CommentsDataSourceRemote.swift in Sources */,
 				038E86E4234A3FC70083F4E1 /* UserLocal.swift in Sources */,
 				0378458322E353AE005B33FC /* PostsDataManager.swift in Sources */,
 				038E86D7234A32A20083F4E1 /* PostsRepository.swift in Sources */,
+				03DC7A40234E7C8000121737 /* PostsDataSourceLocal.swift in Sources */,
+				03DC7A38234E7B6700121737 /* UsersDataSourceLocal.swift in Sources */,
 				03DC7A2D234E76A900121737 /* UsersRepository.swift in Sources */,
 				038E86DC234A34040083F4E1 /* PostCard.swift in Sources */,
 			);
