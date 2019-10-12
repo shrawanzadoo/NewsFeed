@@ -14,9 +14,9 @@ import RxSwift
 class MockCommentsDataSource: CommentsDataSource {
     
     var getCommentsCount = 0
-    var getCommentsReturns = MockDataHelper.getComments()
+    var getCommentsReturns: Single<Result<Comments, Error>>!
     func getComments() -> Single<Result<Comments, Error>> {
         getCommentsCount += 1
-        return Single.just(.success(getCommentsReturns))
+        return getCommentsReturns
     }
 }

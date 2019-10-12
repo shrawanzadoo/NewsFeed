@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct PostCard {
-    let userId: String
-    let postId: String
+struct PostCard: Equatable {
+    
+    static func == (lhs: PostCard, rhs: PostCard) -> Bool {
+        return lhs.postId == rhs.postId && lhs.userId == rhs.userId
+    }
+    
+    let userId: Int
+    let postId: Int
     
     let name: String
     let userName: String

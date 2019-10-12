@@ -14,9 +14,9 @@ import RxSwift
 class MockPostsDataSource: PostsDataSource {
     
     var getPostsCount = 0
-    var getPostsReturns = MockDataHelper.getPosts()
+    var getPostsReturns: Single<Result<Posts, Error>>!
     func getPosts() -> Single<Result<Posts, Error>> {
         getPostsCount += 1
-        return Single.just(.success(getPostsReturns))
+        return getPostsReturns
     }
 }

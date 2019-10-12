@@ -8,27 +8,55 @@
 
 import Foundation
 import XCTest
+import RxSwift
 
 @testable import News_Feed
 
 class PostsRepositoryTests: XCTestCase {
     
-    let schedulerProvider = MockSchedulerProvider()
+    var disposeBag: DisposeBag!
     
-    func post_repo_test_success() {
+    override func setUp() {
+        disposeBag = DisposeBag()
+    }
+    
+    func testPostRepoSuccess() {
+
+        let dataSource = MockPostsDataSource()
+        dataSource.getPostsReturns = Single.just(.success(MockDataHelper.getPosts()))
         
-        let repo: PostsRepository = PostsRepositoryImpl(dataSources: [MockPostsDataSource()])
+        let repo: PostsRepository = PostsRepositoryImpl(dataSources: [dataSource])
         _ = repo.getPosts()
-            .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
             .subscribe(onNext: { result in
                 switch(result) {
                 case .success(let posts):
-                    XCTAssertEqual(10, posts.count)
+                    XCTAssertEqual(100, posts.count)
                 case .failure(_):
                     XCTFail()
                 }
-            })
+            }).disposed(by: disposeBag)
         
+        // verify data source method called
+        XCTAssertEqual(1, dataSource.getPostsCount)
+    }
+    
+    func testPostRepoFailure() {
+
+        let dataSource = MockPostsDataSource()
+        dataSource.getPostsReturns = Single.just(.failure(BaseError.noData))
+        
+        let repo: PostsRepository = PostsRepositoryImpl(dataSources: [dataSource])
+        _ = repo.getPosts()
+            .subscribe(onNext: { result in
+                switch(result) {
+                case .success(_):
+                    XCTFail()
+                case .failure(let error):
+                    XCTAssertEqual(BaseError.noData, error as! BaseError)
+                }
+            }).disposed(by: disposeBag)
+        
+        // verify data source method called
+        XCTAssertEqual(1, dataSource.getPostsCount)
     }
 }

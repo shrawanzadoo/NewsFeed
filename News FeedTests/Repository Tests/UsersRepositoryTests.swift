@@ -8,19 +8,27 @@
 
 import Foundation
 import XCTest
+import RxSwift
 
 @testable import News_Feed
 
 class UsersRepositoryTests: XCTestCase {
     
-    let schedulerProvider = MockSchedulerProvider()
+    var disposeBag: DisposeBag!
     
-    func user_repo_test_success() {
+    override func setUp() {
+        disposeBag = DisposeBag()
+    }
+    
+    func testUserRepoSuccess() {
         
-        let repo: UsersRepository = UsersRepositoryImpl(dataSources: [MockUsersDataSource()])
+        let dataSource = MockUsersDataSource()
+        
+        dataSource.getUsersReturns = Single.just(.success(MockDataHelper.getUsers()))
+
+        let repo: UsersRepository = UsersRepositoryImpl(dataSources: [dataSource])
+        
         _ = repo.getUsers()
-            .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
             .subscribe(onNext: { result in
                 switch(result) {
                 case .success(let users):
@@ -29,6 +37,31 @@ class UsersRepositoryTests: XCTestCase {
                     XCTFail()
                 }
             })
+            .disposed(by: disposeBag)
         
+        // verify data source method called
+        XCTAssertEqual(1, dataSource.getUsersCount)
+    }
+    
+    func testUserRepoFail() {
+        
+        let dataSource = MockUsersDataSource()
+        
+        dataSource.getUsersReturns = Single.just(.failure(BaseError.parsingError))
+
+        let repo: UsersRepository = UsersRepositoryImpl(dataSources: [dataSource])
+        
+        _ = repo.getUsers()
+            .subscribe(onNext: { result in
+                switch(result) {
+                case .success(_):
+                    XCTFail()
+                case .failure(let error):
+                    XCTAssertEqual(BaseError.parsingError, error as! BaseError)
+                }
+            }).disposed(by: disposeBag)
+        
+        // verify data source method called
+        XCTAssertEqual(1, dataSource.getUsersCount)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BaseError: Error {
+enum BaseError: Error, Equatable {
     case noData
     case parsingError
 }

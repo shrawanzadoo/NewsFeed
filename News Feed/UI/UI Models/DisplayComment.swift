@@ -8,8 +8,8 @@
 
 import Foundation
 struct DisplayComment {
-    let id: String
-    let postId: String
+    let id: Int
+    let postId: Int
     let name: String
     let email: String
     let body: String

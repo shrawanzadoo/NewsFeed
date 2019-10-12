@@ -14,9 +14,9 @@ import RxSwift
 class MockUsersDataSource: UsersDataSource {
     
     var getUsersCount = 0
-    var getUsersReturns = MockDataHelper.getUsers()
+    var getUsersReturns: Single<Result<Users, Error>>!
     func getUsers() -> Single<Result<Users, Error>> {
         getUsersCount += 1
-        return Single.just(.success(getUsersReturns))
+        return getUsersReturns
     }
 }

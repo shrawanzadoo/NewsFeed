@@ -23,7 +23,7 @@ class GetComments: UseCase {
     // imagine these comments will be for a user
     // so we will need to pass in the user user id/auth/session
     // which is not used now
-    func execute(requestValues: Q) -> Observable<T> {
+    func execute(_ requestValues: Q) -> Observable<T> {
         return commentsRepository.getComments()
     }
 }
