@@ -16,13 +16,14 @@ class PostCardCellTests: BaseSnapshotTestCase {
             return
         }
         
-        cell.configureCellWith(model: getPostCard())
+        cell.configureCellWith(model: getPostCard(), true)
         
         FBSnapshotVerifyView(cell)
     }
     
     private func getPostCard() -> PostCard {
-        return PostCard(userId: 1, postId: 1, name: "Ram", userName: "Vishnu", email: "vishnu@moksha.com", postTitle: "Vasudev Kutumbakam", postBody: """
+        return PostCard(userId: 1, postId: 1, name: "Ram", userName: "Vishnu", email: "vishnu@moksha.com", postTitle: "Vasudev Kutumbakam",
+                        postBody: """
         The world is a family
         One is a relative, the other stranger,
         say the small minded.
@@ -33,8 +34,13 @@ class PostCardCellTests: BaseSnapshotTestCase {
         be magnanimous,
         lift up your mind, enjoy
         the fruit of Brahmanic freedom.
-""",
-                        comments: [DisplayComment(id: 1, postId: 2, name: "Lakshman", email: "lakshman@heaven.com", body: "Bro you rock")])
+        """,
+                        comments: [
+        DisplayComment(id: 1, postId: 2, name: "Bro you rock", email: "lakshman@heaven.com", body: ""),
+        DisplayComment(id: 1, postId: 2, name: "Bro you stone", email: "lakshman@heaven.com", body: ""),
+        DisplayComment(id: 1, postId: 2, name: "Bro you marble", email: "lakshman@heaven.com", body: ""),
+        DisplayComment(id: 1, postId: 2, name: "Bro you granite", email: "lakshman@heaven.com", body: ""),
+        DisplayComment(id: 1, postId: 2, name: "Bro you pebble", email: "lakshman@heaven.com", body: "")])
     }
     
 }

@@ -13,6 +13,8 @@ class PostsViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    private let refreshControl = UIRefreshControl()
+    
     var presenter: NewsFeedPresenterContract?
     
     var dataSource: [PostCard] = []
@@ -27,6 +29,13 @@ class PostsViewController: UIViewController {
         presenter?.getNewsFeed()
         
         tableView.registerTableViewCellNib(PostCardCell.self)
+        tableView.addSubview(refreshControl)
+        
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        presenter?.getNewsFeed()
     }
 }
 
@@ -37,11 +46,11 @@ extension PostsViewController: NewsFeedViewContract {
     }
     
     func updateNewsFeed(postCards: [PostCard]?) {
-        if let postCards = postCards {
-            dataSource = postCards
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+            if let postCards = postCards {
+                self.dataSource = postCards
                 self.tableView.reloadData()
-                print(self.dataSource.count)
             }
         }
     }
