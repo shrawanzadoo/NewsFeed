@@ -19,11 +19,17 @@ class PostCardCell: UITableViewCell {
     
     func configureCellWith(model: PostCard) {
         initialsTitle.text = model.name.first?.description
-        nameLabel.text = model.name
-        emailLabel.text = model.email
-        postTitleLabel.text = model.postTitle
-        postBodyLabel.text = model.postBody
-        commentsLabel.text = "\(model.comments.count) comments"
+        nameLabel.text = "👤 \(model.name)"
+        emailLabel.text = "📭 \(model.email)"
+        postTitleLabel.text = "⌁ \(model.postTitle)"
+        postBodyLabel.text = "\(model.postBody)"
+        let commentCount = model.comments.count
+        if commentCount == 1 {
+            commentsLabel.text = "💬 \(model.comments.count) comment"
+        } else {
+            commentsLabel.text = "💬 \(model.comments.count) comments"
+        }
+        
     }
     
 }
