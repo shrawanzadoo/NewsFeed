@@ -10,12 +10,31 @@ import FBSnapshotTestCase
 @testable import News_Feed
 
 class PostCardCellTests: BaseSnapshotTestCase {
-  func test_PostCardCell() {
-    guard let cell = PostCardCell.loadFromNib() else {
-        XCTFail("Failed to generate the view of PostCardCell")
-        return
+    func test_PostCardCell() {
+        guard let cell = PostCardCell.loadFromNib() else {
+            XCTFail("Failed to generate the view of PostCardCell")
+            return
+        }
+        
+        cell.configureCellWith(model: getPostCard())
+        
+        FBSnapshotVerifyView(cell)
     }
+    
+    private func getPostCard() -> PostCard {
+        return PostCard(userId: 1, postId: 1, name: "Ram", userName: "Vishnu", email: "vishnu@moksha.com", postTitle: "Vasudev Kutumbakam", postBody: """
+        The world is a family
+        One is a relative, the other stranger,
+        say the small minded.
+        The entire world is a family,
+        live the magnanimous.
 
-    FBSnapshotVerifyView(cell)
-  }
+        Be detached,
+        be magnanimous,
+        lift up your mind, enjoy
+        the fruit of Brahmanic freedom.
+""",
+                        comments: [DisplayComment(id: 1, postId: 2, name: "Lakshman", email: "lakshman@heaven.com", body: "Bro you rock")])
+    }
+    
 }
