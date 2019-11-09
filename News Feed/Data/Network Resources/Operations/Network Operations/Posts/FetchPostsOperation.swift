@@ -44,6 +44,9 @@ class FetchPostsOperation: ConcurrentOperation<PostsRemote> {
                 let managedContext = self.persistentContainer.viewContext
                 let posts = try decoder.decode(PostsRemote.self, from: data)
                 
+                // clear previous data before saving
+                self.clearStoredData()
+                
                 // save locally
                 posts.forEach { post in
                     _ = PostLocal(userId: post.userId, id: post.id, body: post.body, title: post.title, needSave: true, context: managedContext)
@@ -57,6 +60,18 @@ class FetchPostsOperation: ConcurrentOperation<PostsRemote> {
         }
         
         sessionTask?.resume()
+    }
+    
+    func clearStoredData() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Post")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+        do {
+            try self.persistentContainer.viewContext.execute(deleteRequest)
+            try self.persistentContainer.viewContext.save()
+        } catch {
+            print ("Post table might already be cleared")
+        }
     }
     
     // MARK: Cancel task

@@ -13,8 +13,8 @@ import XCTest
 class MockNewsFeedView: NewsFeedViewContract {
     
     var updateNewsFeedCount = 0
-    var updateNewsFeedParam: [[PostCard]] = []
-    func updateNewsFeed(postCards: [PostCard]) {
+    var updateNewsFeedParam: [[PostCard]?] = []
+    func updateNewsFeed(postCards: [PostCard]?) {
         updateNewsFeedCount += 1
         updateNewsFeedParam.append(postCards)
     }

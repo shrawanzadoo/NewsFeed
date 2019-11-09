@@ -43,6 +43,9 @@ class FetchUsersOperation: ConcurrentOperation<UsersRemote> {
                 let managedContext = self.persistentContainer.viewContext
                 let users = try decoder.decode(UsersRemote.self, from: data)
                 
+                // clear previous data before saving
+                self.clearStoredData()
+                
                 // save locally
                 users.forEach { user in
                     _ = UserLocal(id: user.id, name: user.name, username: user.username, email: user.email, address: AddressLocal(street: user.address.street, suite: user.address.suite, city: user.address.city, zipcode: user.address.zipcode, geo: GeoLocal(lat: user.address.geo.lat, lng: user.address.geo.lng, needSave: true, context: managedContext), needSave: true, context: managedContext), phone: user.phone, website: user.website, company: CompanyLocal(name: user.company.name, catchPhrase: user.company.catchPhrase, bs: user.company.bs, needSave: true, context: managedContext), needSave: true, context: managedContext)
@@ -56,6 +59,25 @@ class FetchUsersOperation: ConcurrentOperation<UsersRemote> {
         }
         
         sessionTask?.resume()
+    }
+    
+    func clearStoredData() {
+        clearDataFor("User")
+        clearDataFor("Address")
+        clearDataFor("Geo")
+        clearDataFor("Company")
+    }
+    
+    private func clearDataFor(_ entity: String) {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+        do {
+            try self.persistentContainer.viewContext.execute(deleteRequest)
+            try self.persistentContainer.viewContext.save()
+        } catch {
+            print ("\(entity) table might already be cleared")
+        }
     }
     
     

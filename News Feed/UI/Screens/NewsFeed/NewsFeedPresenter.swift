@@ -40,10 +40,9 @@ class NewsFeedPresenter: NewsFeedPresenterContract {
                 var postCards: [PostCard] = []
                 
                 if let posts = self.processResponse(postsResponse),
-                    let users = self.processResponse(usersResponse) {
+                    let users = self.processResponse(usersResponse),
+                    let comments = self.processResponse(commentsResponse) {
                     
-                    // comments aren't necessary post the news feed
-                    let comments = self.processResponse(commentsResponse)
                     posts.forEach { post in
                         
                         // user for the post
@@ -51,14 +50,13 @@ class NewsFeedPresenter: NewsFeedPresenterContract {
                             
                             var displayComments: [DisplayComment] = []
                             // comments for the post
-                            if let commentsForPost = comments?.filter({ $0.postId == post.id }) {
-                                commentsForPost.forEach { comment in
-                                    displayComments.append(DisplayComment(id: comment.id,
-                                                                          postId: comment.postId,
-                                                                          name: comment.name,
-                                                                          email: comment.email,
-                                                                          body: comment.body))
-                                }
+                            let commentsForPost = comments.filter({ $0.postId == post.id })
+                            commentsForPost.forEach { comment in
+                                displayComments.append(DisplayComment(id: comment.id,
+                                                                      postId: comment.postId,
+                                                                      name: comment.name,
+                                                                      email: comment.email,
+                                                                      body: comment.body))
                             }
                             
                             postCards.append(PostCard(userId: post.userId,

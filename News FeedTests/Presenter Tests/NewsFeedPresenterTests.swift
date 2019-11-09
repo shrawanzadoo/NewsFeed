@@ -54,7 +54,7 @@ class NewsFeedPresenterTests: XCTestCase {
         presenter.takeView(view)
         
         presenter.getNewsFeed()
-        XCTAssertEqual(100, view.updateNewsFeedParam[0].count)
+        XCTAssertEqual(100, view.updateNewsFeedParam[0]?.count)
     }
     
     func testUpdateWithoutComments() {
@@ -67,8 +67,7 @@ class NewsFeedPresenterTests: XCTestCase {
         
         presenter.getNewsFeed()
         
-        // number of post cards should be the same, since comments are not required for a post
-        XCTAssertEqual(100, view.updateNewsFeedParam[0].count)
+        XCTAssertEqual(nil, view.updateNewsFeedParam[0]?.count)
     }
     
     func testUpdateWithoutUsers() {
@@ -82,7 +81,7 @@ class NewsFeedPresenterTests: XCTestCase {
         presenter.getNewsFeed()
         
         // there should be no posts since we can't assosiate a post with a user
-        XCTAssertEqual(0, view.updateNewsFeedParam[0].count)
+        XCTAssertEqual(nil, view.updateNewsFeedParam[0]?.count)
     }
     
     func testUpdateWithoutPosts() {
@@ -96,7 +95,7 @@ class NewsFeedPresenterTests: XCTestCase {
         presenter.getNewsFeed()
         
         // there should be no posts
-        XCTAssertEqual(0, view.updateNewsFeedParam[0].count)
+        XCTAssertEqual(nil, view.updateNewsFeedParam[0]?.count)
     }
     
 }

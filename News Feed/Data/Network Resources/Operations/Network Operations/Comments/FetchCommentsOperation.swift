@@ -43,6 +43,10 @@ class FetchCommentsOperation: ConcurrentOperation<CommentsRemote> {
                 let managedContext = self.persistentContainer.viewContext
                 let comments = try decoder.decode(CommentsRemote.self, from: data)
                 
+                // clear previous data before saving
+                self.clearStoredData()
+                
+                // save locally
                 comments.forEach { comment in
                     _ = CommentLocal(postId: comment.postId, id: comment.id, name: comment.name, email: comment.email, body: comment.body, needSave: true, context: managedContext)
                 }
@@ -56,6 +60,19 @@ class FetchCommentsOperation: ConcurrentOperation<CommentsRemote> {
         
         sessionTask?.resume()
     }
+    
+    func clearStoredData() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Comment")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+        do {
+            try self.persistentContainer.viewContext.execute(deleteRequest)
+            try self.persistentContainer.viewContext.save()
+        } catch {
+            print ("Comments table might already be cleared")
+        }
+    }
+    
     // MARK: Cancel task
     override func cancel() {
         sessionTask?.cancel()
