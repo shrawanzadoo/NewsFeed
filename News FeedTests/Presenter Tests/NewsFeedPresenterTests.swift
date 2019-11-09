@@ -51,7 +51,7 @@ class NewsFeedPresenterTests: XCTestCase {
         mockUsersRepository.getUsersReturn = Observable.just(.success(MockDataHelper.getUsers()))
         mockCommentsRepository.getCommentsReturn = Observable.just(.success(MockDataHelper.getComments()))
         
-        presenter.takeView(view: view)
+        presenter.takeView(view)
         
         presenter.getNewsFeed()
         XCTAssertEqual(100, view.updateNewsFeedParam[0].count)
@@ -63,7 +63,7 @@ class NewsFeedPresenterTests: XCTestCase {
         mockUsersRepository.getUsersReturn = Observable.just(.success(MockDataHelper.getUsers()))
         mockCommentsRepository.getCommentsReturn = Observable.just(.failure(BaseError.noData))
         
-        presenter.takeView(view: view)
+        presenter.takeView(view)
         
         presenter.getNewsFeed()
         
@@ -77,7 +77,7 @@ class NewsFeedPresenterTests: XCTestCase {
         mockUsersRepository.getUsersReturn = Observable.just(.failure(BaseError.noData))
         mockCommentsRepository.getCommentsReturn = Observable.just(.failure(BaseError.noData))
         
-        presenter.takeView(view: view)
+        presenter.takeView(view)
         
         presenter.getNewsFeed()
         
@@ -91,7 +91,7 @@ class NewsFeedPresenterTests: XCTestCase {
         mockUsersRepository.getUsersReturn = Observable.just(.failure(BaseError.noData))
         mockCommentsRepository.getCommentsReturn = Observable.just(.failure(BaseError.noData))
         
-        presenter.takeView(view: view)
+        presenter.takeView(view)
         
         presenter.getNewsFeed()
         

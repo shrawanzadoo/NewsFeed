@@ -9,6 +9,7 @@
 import Foundation
 
 protocol NewsFeedPresenterContract {
+    func takeView(_ view: NewsFeedViewContract)
     func getNewsFeed()
 }
 

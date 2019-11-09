@@ -16,10 +16,18 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Posts"
+        
+        presenter?.takeView(self)
+        presenter?.getNewsFeed()
     }
 }
 
 extension PostsViewController: NewsFeedViewContract {
+    
+    func setPresenter(presenter: NewsFeedPresenterContract) {
+        self.presenter = presenter
+    }
+    
     func updateNewsFeed(postCards: [PostCard]) {
         
     }

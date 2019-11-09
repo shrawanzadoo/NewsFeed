@@ -30,7 +30,7 @@ class NewsFeedPresenter: NewsFeedPresenterContract {
         self.getCommentsUseCase = getCommentsUseCase
     }
     
-    func takeView(view: NewsFeedViewContract) {
+    func takeView(_ view: NewsFeedViewContract) {
         self.view = view
     }
     

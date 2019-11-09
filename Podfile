@@ -16,5 +16,10 @@ target 'News Feed' do
     pod 'RxBlocking', '~> 5'
     pod 'RxTest', '~> 5'
   end
+  
+  target "NewsFeedSnapshotTests" do
+    use_frameworks!
+    pod 'iOSSnapshotTestCase'
+  end
 
 end
