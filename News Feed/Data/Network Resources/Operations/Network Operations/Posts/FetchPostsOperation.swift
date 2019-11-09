@@ -27,10 +27,6 @@ class FetchPostsOperation: ConcurrentOperation<PostsRemote> {
     
     override func main() {
 
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
-            fatalError("Failed to retrieve managed object context")
-        }
-        
         let request = requestFactory.retrivePosts()
         
         sessionTask = session.dataTask(with: request) { (data, response, error) in
@@ -46,8 +42,12 @@ class FetchPostsOperation: ConcurrentOperation<PostsRemote> {
             do {
                 let decoder = JSONDecoder()
                 let managedContext = self.persistentContainer.viewContext
-                decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedContext
                 let posts = try decoder.decode(PostsRemote.self, from: data)
+                
+                // save locally
+                posts.forEach { post in
+                    _ = PostLocal(userId: post.userId, id: post.id, body: post.body, title: post.title, needSave: true, context: managedContext)
+                }
                 
                 try managedContext.save()
                 self.complete(result: .success(posts))

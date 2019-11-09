@@ -14,6 +14,6 @@ protocol NewsFeedPresenterContract {
 }
 
 protocol NewsFeedViewContract {
-    func updateNewsFeed(postCards: [PostCard])
+    func updateNewsFeed(postCards: [PostCard]?)
     func showError()
 }

@@ -93,7 +93,7 @@
          <EnvironmentVariable
             key = "RECORD_MODE"
             value = ""
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

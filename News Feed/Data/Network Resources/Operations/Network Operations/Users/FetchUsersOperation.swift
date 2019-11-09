@@ -26,12 +26,7 @@ class FetchUsersOperation: ConcurrentOperation<UsersRemote> {
     
     override func main() {
         
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
-            fatalError("Failed to retrieve managed object context")
-        }
-        
         let request = requestFactory.retriveUsers()
-        
         
         sessionTask = session.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
@@ -46,8 +41,12 @@ class FetchUsersOperation: ConcurrentOperation<UsersRemote> {
             do {
                 let decoder = JSONDecoder()
                 let managedContext = self.persistentContainer.viewContext
-                decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedContext
                 let users = try decoder.decode(UsersRemote.self, from: data)
+                
+                // save locally
+                users.forEach { user in
+                    _ = UserLocal(id: user.id, name: user.name, username: user.username, email: user.email, address: AddressLocal(street: user.address.street, suite: user.address.suite, city: user.address.city, zipcode: user.address.zipcode, geo: GeoLocal(lat: user.address.geo.lat, lng: user.address.geo.lng, needSave: true, context: managedContext), needSave: true, context: managedContext), phone: user.phone, website: user.website, company: CompanyLocal(name: user.company.name, catchPhrase: user.company.catchPhrase, bs: user.company.bs, needSave: true, context: managedContext), needSave: true, context: managedContext)
+                }
                 
                 try managedContext.save()
                 self.complete(result: .success(users))

@@ -12,13 +12,11 @@ target 'News Feed' do
 
   target 'News FeedTests' do
     inherit! :search_paths
-    # Pods for testing
-    pod 'RxBlocking', '~> 5'
-    pod 'RxTest', '~> 5'
   end
   
   target "NewsFeedSnapshotTests" do
     use_frameworks!
+    inherit! :search_paths
     pod 'iOSSnapshotTestCase'
   end
 

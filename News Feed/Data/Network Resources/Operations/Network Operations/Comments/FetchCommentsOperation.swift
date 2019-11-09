@@ -26,10 +26,6 @@ class FetchCommentsOperation: ConcurrentOperation<CommentsRemote> {
     
     override func main() {
 
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
-            fatalError("Failed to retrieve managed object context")
-        }
-        
         let request = requestFactory.retriveComments()
         
         sessionTask = session.dataTask(with: request) { (data, response, error) in
@@ -45,8 +41,11 @@ class FetchCommentsOperation: ConcurrentOperation<CommentsRemote> {
             do {
                 let decoder = JSONDecoder()
                 let managedContext = self.persistentContainer.viewContext
-                decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedContext
                 let comments = try decoder.decode(CommentsRemote.self, from: data)
+                
+                comments.forEach { comment in
+                    _ = CommentLocal(postId: comment.postId, id: comment.id, name: comment.name, email: comment.email, body: comment.body, needSave: true, context: managedContext)
+                }
                 
                 try managedContext.save()
                 self.complete(result: .success(comments))

@@ -36,7 +36,7 @@ class NewsFeedPresenter: NewsFeedPresenterContract {
     
     func getNewsFeed() {
         Observable
-            .combineLatest(getCommentsUseCase.execute(""), getPostsUseCase.execute(""), getUsersUseCase.execute("")) { (commentsResponse, postsResponse, usersResponse) -> [PostCard] in
+            .combineLatest(getCommentsUseCase.execute(""), getPostsUseCase.execute(""), getUsersUseCase.execute("")) { (commentsResponse, postsResponse, usersResponse) -> [PostCard]? in
                 var postCards: [PostCard] = []
                 
                 if let posts = self.processResponse(postsResponse),
@@ -71,8 +71,9 @@ class NewsFeedPresenter: NewsFeedPresenterContract {
                                                       comments: displayComments))
                         }
                     }
+                    return postCards
                 }
-                return postCards
+                return nil
         }
         .subscribeOn(scheduler.ui())
         .observeOn(scheduler.io())
