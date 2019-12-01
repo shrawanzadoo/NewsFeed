@@ -11,14 +11,6 @@ import Foundation
 typealias PostsRemote = [PostRemote]
 
 struct PostRemote: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case userId
-        case id
-        case title
-        case body
-    }
-    
     var userId: Int
     var id: Int
     var body: String

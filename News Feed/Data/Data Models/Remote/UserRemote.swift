@@ -11,18 +11,6 @@ import Foundation
 typealias UsersRemote = [UserRemote]
 
 struct UserRemote: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case username
-        case email
-        case address
-        case phone
-        case website
-        case company
-    }
-    
     var id: Int
     var name: String
     var username: String
@@ -34,15 +22,6 @@ struct UserRemote: Codable {
 }
 
 struct Address: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case street
-        case suite
-        case city
-        case zipcode
-        case geo
-    }
-    
     var street: String
     var suite: String
     var city: String
@@ -51,24 +30,11 @@ struct Address: Codable {
 }
 
 struct Geo: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case lat
-        case lng
-    }
-    
     var lat: String
     var lng: String
 }
 
 struct Company: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case catchPhrase
-        case bs
-    }
-    
     var name: String
     var catchPhrase: String
     var bs: String

@@ -11,15 +11,6 @@ import Foundation
 typealias CommentsRemote = [CommentRemote]
 
 struct CommentRemote: Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case postId
-        case id
-        case name
-        case email
-        case body
-    }
-    
     var postId: Int
     var id: Int
     var name: String
